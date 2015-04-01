@@ -1,5 +1,4 @@
-library(shiny)
-library(data.table)
+
 
 yelp.url <- function(category, city,radius,cons_key, cons_sec, tok, tok_sec) {
   
@@ -55,11 +54,7 @@ yelp.url <- function(category, city,radius,cons_key, cons_sec, tok, tok_sec) {
 }
 
 yelp.data <- function(category="bars", city="Chester", radius=3500, consumerkey, consumersecret, token, tokensecret) {
-  require(package="digest")
-  require(package="RJSONIO")
-  require(package="RCurl")
-  require(package="stringr")
-  require("dplyr")
+  
   #Create the signed URL 
   y.url <- yelp.url(category = category,city=city,
                     radius=radius,
@@ -96,9 +91,7 @@ construct.distance.url <- function(origins, return.call = "json",
 }
 
 distance.matrix <- function(address,y,verbose=FALSE) {
-  require("RCurl")
-  require("Matrix")
-  require("dplyr")
+
   if(verbose) cat(address,"\n")
   
   
@@ -119,7 +112,7 @@ distance.matrix <- function(address,y,verbose=FALSE) {
 }
 
 tsp.route <- function(places,names){
-  require("TSP")
+
   items <- as.numeric(NROW(names))
   city.matrix <- matrix(places,nrow=items, ncol=items, dimnames=list(names,names))
   tsp <- TSP(city.matrix)
@@ -141,9 +134,7 @@ tsp.route <- function(places,names){
 }
 
 create.map<-function(lst, city, radius){
-  require("ggmap")
-  require("plyr")
-  require("dplyr")
+ 
   
   #Create DF and prevent factors from being created.
   way.points <- data.frame(lapply(lst[,1:3], as.character), 

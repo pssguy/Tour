@@ -29,10 +29,10 @@ shinyUI(navbarPage(
            tags$p("Google allows API access with no account up to a certain limit."), 
            tags$a(href="https://www.yelp.com/developers", "Click here to sign up for a Yelp developer account"),
            tags$h3("Enter the Yelp API keys here"),
-           textInput("consumerkey", "Consumer Key"),
-           textInput("consumersecret", "Consumer Secret"),
-           textInput("token", "Token"),
-           textInput("tokensecret", "Token Secret")
+           passwordInput("consumerkey", "Consumer Key", value="0gk3gsBBNFcM__JrM0BpSg"),
+           passwordInput("consumersecret", "Consumer Secret",value="xnwFrSco30G_UcO0ypf4-yfZOfY"),
+           passwordInput("token", "Token",value="apQ-f2E6pnELIjk6uRlKthOzPv2TNQXo"),
+           passwordInput("tokensecret", "Token Secret",value="vpk-qphYA_vMvO823-npAdmk4yQ")
            
            
            
@@ -44,7 +44,7 @@ shinyUI(navbarPage(
   tabPanel('Selection',textInput("city", "Enter a city", value="Chester"),
            textInput("country", "Enter a country", value="UK"),
            selectInput("type", "Select the venue type you wish to visit", choices=(c("bars", "resturants", "museums", "parks")), selected="bars"), 
-           sliderInput("radius", "Select the radius (distance you want to walk)", value=3000,min=100, max=10000, step=100),                
+           sliderInput("radius", "Select the radius (distance(metres) you want to walk)", value=3000,min=1000, max=10000, step=1000, format="#####"),                
            h4("When ready press the process button to create the tour"),
            submitButton("Process",icon("refresh"))
            
